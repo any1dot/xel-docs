@@ -1,0 +1,16 @@
+# ARBITRARY CODE EXECUTION
+
+XEL is a blockchain based supercomputer that allows the work authors to submit tasks and the workers – incentivized by the attached amount of XEL \(the underlying crypto-currency\) – to work on these tasks and receive a reimbursement in exchange. This scheme of course requires that the solutions, which are submitted by the network participants, are somehow verified in a way suitable to form a consensus. However, verifying the correctness of solutions to tasks, that have been written by other users, always involves the execution of potentially untrusted code.
+
+At this point, it is important to address other people’s concerns: many people who are running the XEL core client have different motives than posting or solving work tasks. Some may operate a Blockchain explorer, some just want to play around, others want to stash a number of XEL for future use – their motive may vary greatly. And a great deal of these people do not feel comfortable executing any foreign code on their computers. While the computation engine can be turned off and the blockchain is still working, it is no biggie if you leave it on. There is nothing that can happen.
+
+The system is designed in a way, that it is not possible to write malicious code at all. In order to guarantee it, XEL introduces a completely new and hand-crafed pogramming language termed ePL – a novel programming language that allows work authors to express complex algorithms to be solved on the XEL Blockchain with certain restrictions. The language is loosely based on the C programming language incorporating many of the basic logical, bitwise and mathematical operators / functions. More complex operations such as IO operations are not available.
+
+All this means, that some of the operators that we know from C have been removed or altered. For example, there are no GOTO statements and no FOR, WHILE, or DO loops to avoid the possible threat of an indefinitely running loop. Instead, work authors have a repertoire of substitutes that they have to use. Those substitutes are designed in a way, that the “halting problem” is always solvable – that means we know beforehand that the code will terminate and how many instructions it will require in the worst case. These worst case instructions are also bound by an upper limit to avoid programs which “stall” the network for too long. Additionally, there are no pointers which could be used to make the core client crash \(SIGTERM\) and illegal mathematical operations \(such as a division by zero\) fall back to a default value.
+
+The ePL code is then converted into C, compiled, and can be quicklt and efficiently executed. The reason why people are not allowed to write their algorithms directly in C should be clear from the explanation above. In C, you can do lots of bad stuff - even corrupt the systems memory. However, ePL code, when transformed into C, will always result in safe code. You can say, to emphasize once again, that the ePL language simply does not allow you to write any program that will either crash \(parts of\) your system, spy on your system, alter your system in an undesired way or directly cause any other harm to your system simply because it is generally lacking the required operators / functionality.
+
+{% page-ref page="./" %}
+
+>
+
